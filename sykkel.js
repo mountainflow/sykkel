@@ -1,6 +1,6 @@
+// Need to think about deducting from inventory and adding $$ to cart
 const mysql = require('mysql');
 const inquirer = require('inquirer');
-
 const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
@@ -12,11 +12,6 @@ connection.connect(function (err) {
     if (err) throw err;
     start();
 });
-
-// Make an exit choice in the switch case statement in inquirer
-// Not sure if it 's better to make several .csv files and import them into respective tables, 
-// or use INSERT INTO
-// Need to think about deducting from inventory and adding $$ to cart
 
 function start() {
     console.log('connected to DB');
@@ -51,12 +46,50 @@ function start() {
     });
 }
 
-// let roadBikes = function () {
-//     let query = 'SELECT item, price FROM road_bikes WHERE ?';
-//     connection.query(query);
-//     for (let i = 0; i < )
-// }
+let roadBikes = function () {
+    let query = 'SELECT item, price FROM road_bikes WHERE ?';
+    connection.query(query);
+    // for (let i = 0; i < )
+}
+
+let mountainBikes = function () {
+
+}
+
+let parts = function () {
+    inquirer.prompt({
+        name: 'parts',
+        type: 'list',
+        message: 'Do you need Road or Mountain bike parts?',
+        choices: [
+            'Road',
+            'Mountain'
+        ]
+    }).then(function (answer) {
+            switch (answer.parts) {
+                case 'Road':
+                    partsRoad();
+                    break;
+                case 'Mountain':
+                    partsMountain();
+            }
+
+    });
+}
+
+let partsRoad = function () {
+
+}
+
+let partsMountain = function () {
+
+}
+
+let checkout = function () {
+
+}
 
 let exit = function () {
     connection.end();
+    console.log('Have a nice Day :)');
 }
