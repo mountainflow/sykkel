@@ -17,7 +17,7 @@ function start() {
     console.log('connected to DB');
     inquirer.prompt({
         name: 'items',
-        type: 'list',
+        type: 'rawlist',
         message: 'What are you shopping for?',
         choices: [
             'Road Bikes',
@@ -45,7 +45,33 @@ function start() {
         }
     });
 }
-
+let intermezzo = function () {
+    inquirer.prompt({
+        name: 'intermezzo',
+        type: 'rawlist',
+        message: 'What would you like to do next?',
+        choices: [
+            'Buy an Item by ID#',
+            'Continue Shopping',
+            'Checkout',
+            'EXIT'
+        ]
+    }).then(function (answer) {
+        switch (answer.intermezzo) {
+            case 'Buy an Item by ID#':
+                sale();
+                break;
+            case 'Continue Shopping':
+                start();
+                break;
+            case 'Checkout':
+                checkout();
+                break;
+            case 'EXIT':
+                exit();
+        }
+    })
+}
 let roadBikes = function () {
     let query = 'SELECT id, item, price, quantity FROM road_bikes';
     connection.query(query, function (err, res) {
@@ -53,10 +79,9 @@ let roadBikes = function () {
         for (let i = 0; i < res.length; i++) {
             console.log('\nID#: ' + res[i].id + '\nItem: ' + res[i].item + '\nPrice: $' + res[i].price + '\nQuantity Available: ' + res[i].quantity + '\n\n+++++++++++++++++++++++++++++');
         }
-        start();
+        intermezzo();
     });
 }
-
 let mountainBikes = function () {
     let query = 'SELECT id, item, price, quantity FROM mountain_bikes';
     connection.query(query, function (err, res) {
@@ -64,10 +89,9 @@ let mountainBikes = function () {
         for (let i = 0; i < res.length; i++) {
             console.log('\nID#: ' + res[i].id + '\nItem: ' + res[i].item + '\nPrice: $' + res[i].price + '\nQuantity Available: ' + res[i].quantity + '\n\n+++++++++++++++++++++++++++++');
         }
-        start();
+        intermezzo();
     });
 }
-
 let coolStuff = function () {
     let query = 'SELECT id, item, price, quantity FROM accesories';
     connection.query(query, function (err, res) {
@@ -75,15 +99,16 @@ let coolStuff = function () {
         for (let i = 0; i < res.length; i++) {
             console.log('\nID#: ' + res[i].id + '\nItem: ' + res[i].item + '\nPrice: $' + res[i].price + '\nQuantity Available: ' + res[i].quantity + '\n\n+++++++++++++++++++++++++++++');
         }
-        start();
+        intermezzo();
     });
 }
+let sale = function () {
 
+}
 let checkout = function () {
 
 }
-
 let exit = function () {
     connection.end();
-    console.log('\nHave an amazing Day :)');
+    console.log('\n\nHave an amazing Day :)\n\n\n');
 }
