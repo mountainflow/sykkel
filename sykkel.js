@@ -22,7 +22,7 @@ function start() {
         choices: [
             'Road Bikes',
             'Mountain Bikes',
-            'Parts',
+            'Cool Stuff',
             'Checkout',
             'EXIT'
         ]
@@ -34,8 +34,8 @@ function start() {
             case 'Mountain Bikes':
                 mountainBikes();
                 break;
-            case 'Parts':
-                parts();
+            case 'Cool Stuff':
+                coolStuff();
                 break;
             case 'Checkout':
                 checkout();
@@ -47,42 +47,36 @@ function start() {
 }
 
 let roadBikes = function () {
-    let query = 'SELECT item, price FROM road_bikes WHERE ?';
-    connection.query(query);
-    // for (let i = 0; i < )
-}
-
-let mountainBikes = function () {
-
-}
-
-let parts = function () {
-    inquirer.prompt({
-        name: 'parts',
-        type: 'list',
-        message: 'Do you need Road or Mountain bike parts?',
-        choices: [
-            'Road',
-            'Mountain'
-        ]
-    }).then(function (answer) {
-            switch (answer.parts) {
-                case 'Road':
-                    partsRoad();
-                    break;
-                case 'Mountain':
-                    partsMountain();
-            }
-
+    let query = 'SELECT id, item, price, quantity FROM road_bikes';
+    connection.query(query, function (err, res) {
+        console.log('\n++++++++++++++++++++++++++++');
+        for (let i = 0; i < res.length; i++) {
+            console.log('\nID#: ' + res[i].id + '\nItem: ' + res[i].item + '\nPrice: $' + res[i].price + '\nQuantity Available: ' + res[i].quantity + '\n\n+++++++++++++++++++++++++++++');
+        }
+        start();
     });
 }
 
-let partsRoad = function () {
-
+let mountainBikes = function () {
+    let query = 'SELECT id, item, price, quantity FROM mountain_bikes';
+    connection.query(query, function (err, res) {
+        console.log('\n++++++++++++++++++++++++++++');
+        for (let i = 0; i < res.length; i++) {
+            console.log('\nID#: ' + res[i].id + '\nItem: ' + res[i].item + '\nPrice: $' + res[i].price + '\nQuantity Available: ' + res[i].quantity + '\n\n+++++++++++++++++++++++++++++');
+        }
+        start();
+    });
 }
 
-let partsMountain = function () {
-
+let coolStuff = function () {
+    let query = 'SELECT id, item, price, quantity FROM accesories';
+    connection.query(query, function (err, res) {
+        console.log('\n++++++++++++++++++++++++++++');
+        for (let i = 0; i < res.length; i++) {
+            console.log('\nID#: ' + res[i].id + '\nItem: ' + res[i].item + '\nPrice: $' + res[i].price + '\nQuantity Available: ' + res[i].quantity + '\n\n+++++++++++++++++++++++++++++');
+        }
+        start();
+    });
 }
 
 let checkout = function () {
@@ -91,5 +85,5 @@ let checkout = function () {
 
 let exit = function () {
     connection.end();
-    console.log('Have a nice Day :)');
+    console.log('\nHave an amazing Day :)');
 }
