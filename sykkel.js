@@ -1,6 +1,7 @@
-// Need to think about deducting from inventory and adding $$ to cart
 const mysql = require('mysql');
 const inquirer = require('inquirer');
+// Holds the value of the shopping cart
+let cart = 0;
 const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
@@ -12,7 +13,7 @@ connection.connect(function (err) {
     if (err) throw err;
     start();
 });
-
+// Initial function
 function start() {
     console.log('connected to DB');
     inquirer.prompt({
@@ -45,6 +46,7 @@ function start() {
         }
     });
 }
+// Intermediate function to continue on
 let intermezzo = function () {
     inquirer.prompt({
         name: 'intermezzo',
@@ -73,7 +75,7 @@ let intermezzo = function () {
     })
 }
 let roadBikes = function () {
-    let query = 'SELECT id, item, price, quantity FROM road_bikes';
+    let query = 'SELECT * FROM road_bikes';
     connection.query(query, function (err, res) {
         console.log('\n++++++++++++++++++++++++++++');
         for (let i = 0; i < res.length; i++) {
@@ -83,7 +85,7 @@ let roadBikes = function () {
     });
 }
 let mountainBikes = function () {
-    let query = 'SELECT id, item, price, quantity FROM mountain_bikes';
+    let query = 'SELECT * FROM mountain_bikes';
     connection.query(query, function (err, res) {
         console.log('\n++++++++++++++++++++++++++++');
         for (let i = 0; i < res.length; i++) {
@@ -92,8 +94,9 @@ let mountainBikes = function () {
         intermezzo();
     });
 }
+// Accesory Function
 let coolStuff = function () {
-    let query = 'SELECT id, item, price, quantity FROM accesories';
+    let query = 'SELECT * FROM accesories';
     connection.query(query, function (err, res) {
         console.log('\n++++++++++++++++++++++++++++');
         for (let i = 0; i < res.length; i++) {
@@ -102,13 +105,167 @@ let coolStuff = function () {
         intermezzo();
     });
 }
+// Picks the id of item number, adds amount to cart, and updates quantity available
 let sale = function () {
-
+    inquirer.prompt({
+        name: 'sales',
+        type: 'input',
+        message: 'Choose ID#'
+    }).then(function (answer) {
+        switch (answer.sales) {
+            case '201':
+                connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
+                    if (err) throw err;
+                    if (res[0].quantity <= 0) {
+                        console.log('There is not enough of ' + res[0].item + 'left');
+                    } else {
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[0].item + '\nPrice: $' + res[0].price + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[0].price;
+                        intermezzo();
+                    }
+                });
+                break;
+            case '202':
+                connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[1].item + '\nPrice: $' + res[1].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[1].price;
+                    intermezzo();
+                });
+                break;
+            case '203':
+                connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[2].item + '\nPrice: $' + res[2].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[2].price;
+                    intermezzo();
+                });
+                break;
+            case '204':
+                connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[3].item + '\nPrice: $' + res[3].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[3].price;
+                    intermezzo();
+                });
+                break;
+            case '205':
+                connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[4].item + '\nPrice: $' + res[4].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[4].price;
+                    intermezzo();
+                });
+                break;
+            case '301':
+                connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[0].item + '\nPrice: $' + res[0].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[0].price;
+                    intermezzo();
+                });
+                break;
+            case '302':
+                connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[1].item + '\nPrice: $' + res[1].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[1].price;
+                    intermezzo();
+                });
+                break;
+            case '303':
+                connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[2].item + '\nPrice: $' + res[2].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[2].price;
+                    intermezzo();
+                });
+                break;
+            case '304':
+                connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[3].item + '\nPrice: $' + res[3].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[3].price;
+                    intermezzo();
+                });
+                break;
+            case '305':
+                connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[4].item + '\nPrice: $' + res[4].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[4].price;
+                    intermezzo();
+                });
+                break;
+            case '401':
+                connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[0].item + '\nPrice: $' + res[0].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[0].price;
+                    intermezzo();
+                });
+                break;
+            case '402':
+                connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[1].item + '\nPrice: $' + res[1].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[1].price;
+                    intermezzo();
+                });
+                break;
+            case '403':
+                connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[2].item + '\nPrice: $' + res[2].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[2].price;
+                    intermezzo();
+                });
+                break;
+            case '404':
+                connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[3].item + '\nPrice: $' + res[3].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[3].price;
+                    intermezzo();
+                });
+                break;
+            case '405':
+                connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
+                    if (err) throw err;
+                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                    console.log('\nItem: ' + res[4].item + '\nPrice: $' + res[4].price + '\n\n+++++++++++++++++++++++++++++\n');
+                    cart += res[4].price;
+                    intermezzo();
+                });
+                break;
+            default:
+                console.log('Please enter a valid ID#.');
+                sale();
+        }
+    })
 }
 let checkout = function () {
+    console.log('\n++++++++++++++++++++++++++++\nYour cart is at $' + cart + '.00\n\n+++++++++++++++++++++++++++++\n');
+    intermezzo();
+}
+let inventory = function () {
 
 }
 let exit = function () {
     connection.end();
-    console.log('\n\nHave an amazing Day :)\n\n\n');
+    console.log('\n\n\nHave an amazing Day :)\n\n\n');
 }

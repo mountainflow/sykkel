@@ -21,27 +21,19 @@ CREATE TABLE road_bikes
     quantity INT NULL
 );
     ALTER TABLE mountain_bikes AUTO_INCREMENT = 301;
-
-CREATE TABLE parts_road
-(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    item VARCHAR(100) NULL,
-    price INT NULL,
-    quantity INT NULL
-);
-    ALTER TABLE parts_road AUTO_INCREMENT = 401;
     
-    CREATE TABLE parts_mountain
+CREATE TABLE accesories
 (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    item VARCHAR(100) NULL,
-    price INT NULL,
-    quantity INT NULL
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+item VARCHAR(100) NULL,
+price INT NULL,
+quantity INT NULL
 );
-    ALTER TABLE parts_mountain AUTO_INCREMENT = 501;
+    ALTER TABLE accesories AUTO_INCREMENT = 401;
     
 
 SELECT * FROM road_bikes;
 SELECT * FROM mountain_bikes;
-SELECT * FROM parts_road;
-SELECT * FROM parts_mountain;
+SELECT * FROM accesories;
+
+
