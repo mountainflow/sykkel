@@ -72,7 +72,7 @@ let intermezzo = function () {
             case 'EXIT':
                 exit();
         }
-    })
+    });
 }
 let roadBikes = function () {
     let query = 'SELECT * FROM road_bikes';
@@ -114,20 +114,15 @@ let sale = function () {
     }).then(function (answer) {
         switch (answer.sales) {
             case '201':
-            //=======================================================================================================
-            // Work on this section
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[0].quantity <= 0) {
-                        console.log('There is not enough of ' + res[0].item + 'left');
+                        console.log('\nThere are no more ' + res[0].item + 'left');
                     } else {
-                        // HERE ALSO
-                        connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 201', function (err, res) {
-                            if (err) throw err;
-                            console.log('There are ' + res[0].quantity + ' left');
-                        });
+                        connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 201');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                        console.log('\nItem: ' + res[0].item + '\nPrice: $' + res[0].price + '\n\n+++++++++++++++++++++++++++++\n');
+                        console.log('\nItem: ' + res[0].item + '\nPrice: $' + res[0].price);
+                        console.log('\nThere are ' + res[0].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
                         cart += res[0].price;
                         intermezzo();
                     }
@@ -136,127 +131,212 @@ let sale = function () {
             case '202':
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[1].item + '\nPrice: $' + res[1].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[1].price;
-                    intermezzo();
+                    if (res[1].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[1].item + 'left');
+                    } else {
+                        connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 202');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[1].item + '\nPrice: $' + res[1].price);
+                        console.log('\nThere are ' + res[1].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[1].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '203':
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[2].item + '\nPrice: $' + res[2].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[2].price;
-                    intermezzo();
+                    if (res[2].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[2].item + 'left');
+                    } else {
+                        connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 203');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[2].item + '\nPrice: $' + res[2].price);
+                        console.log('\nThere are ' + res[2].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[2].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '204':
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[3].item + '\nPrice: $' + res[3].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[3].price;
-                    intermezzo();
+                    if (res[3].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[3].item + 'left');
+                    } else {
+                        connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 204');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[3].item + '\nPrice: $' + res[3].price);
+                        console.log('\nThere are ' + res[3].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[3].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '205':
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[4].item + '\nPrice: $' + res[4].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[4].price;
-                    intermezzo();
+                    if (res[4].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[4].item + 'left');
+                    } else {
+                        connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 205');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[4].item + '\nPrice: $' + res[4].price);
+                        console.log('\nThere are ' + res[4].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[4].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '301':
                 connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[0].item + '\nPrice: $' + res[0].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[0].price;
-                    intermezzo();
+                    if (res[0].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[0].item + 'left');
+                    } else {
+                        connection.query('UPDATE mountain_bikes SET quantity = quantity - 1 WHERE id = 301');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[0].item + '\nPrice: $' + res[0].price);
+                        console.log('\nThere are ' + res[0].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[0].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '302':
                 connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[1].item + '\nPrice: $' + res[1].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[1].price;
-                    intermezzo();
+                    if (res[1].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[1].item + 'left');
+                    } else {
+                        connection.query('UPDATE mountain_bikes SET quantity = quantity - 1 WHERE id = 302');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[1].item + '\nPrice: $' + res[1].price);
+                        console.log('\nThere are ' + res[1].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[1].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '303':
                 connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[2].item + '\nPrice: $' + res[2].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[2].price;
-                    intermezzo();
+                    if (res[2].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[2].item + 'left');
+                    } else {
+                        connection.query('UPDATE mountain_bikes SET quantity = quantity - 1 WHERE id = 303');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[2].item + '\nPrice: $' + res[2].price);
+                        console.log('\nThere are ' + res[2].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[2].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '304':
                 connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[3].item + '\nPrice: $' + res[3].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[3].price;
-                    intermezzo();
+                    if (res[3].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[3].item + 'left');
+                        intermezzo();
+                    } else {
+                        connection.query('UPDATE mountain_bikes SET quantity = quantity - 1 WHERE id = 304');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[3].item + '\nPrice: $' + res[3].price);
+                        console.log('\nThere are ' + res[3].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[3].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '305':
-                connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
-                    if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[4].item + '\nPrice: $' + res[4].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[4].price;
-                    intermezzo();
-                });
+               connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
+                   if (err) throw err;
+                   if (res[4].quantity <= 0) {
+                       console.log('\nThere are no more ' + res[4].item + 'left');
+                   } else {
+                       connection.query('UPDATE mountain_bikes SET quantity = quantity - 1 WHERE id = 305');
+                       console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                       console.log('\nItem: ' + res[4].item + '\nPrice: $' + res[4].price);
+                       console.log('\nThere are ' + res[4].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                       cart += res[4].price;
+                       intermezzo();
+                   }
+               });
                 break;
             case '401':
                 connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[0].item + '\nPrice: $' + res[0].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[0].price;
-                    intermezzo();
+                    if (res[0].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[0].item + 'left');
+                    } else {
+                        connection.query('UPDATE accesories SET quantity = quantity - 1 WHERE id = 401');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[0].item + '\nPrice: $' + res[0].price);
+                        console.log('\nThere are ' + res[0].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[0].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '402':
-                connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
-                    if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[1].item + '\nPrice: $' + res[1].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[1].price;
-                    intermezzo();
-                });
+               connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
+                   if (err) throw err;
+                   if (res[1].quantity <= 0) {
+                       console.log('\nThere are no more ' + res[1].item + 'left');
+                   } else {
+                       connection.query('UPDATE accesories SET quantity = quantity - 1 WHERE id = 402');
+                       console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                       console.log('\nItem: ' + res[1].item + '\nPrice: $' + res[1].price);
+                       console.log('\nThere are ' + res[1].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                       cart += res[1].price;
+                       intermezzo();
+                   }
+               });
                 break;
             case '403':
                 connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[2].item + '\nPrice: $' + res[2].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[2].price;
-                    intermezzo();
+                    if (res[2].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[2].item + 'left');
+                    } else {
+                        connection.query('UPDATE accesories SET quantity = quantity - 1 WHERE id = 403');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[2].item + '\nPrice: $' + res[2].price);
+                        console.log('\nThere are ' + res[2].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[2].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '404':
                 connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[3].item + '\nPrice: $' + res[3].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[3].price;
-                    intermezzo();
+                    if (res[3].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[3].item + 'left');
+                    } else {
+                        connection.query('UPDATE accesories SET quantity = quantity - 1 WHERE id = 404');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[3].item + '\nPrice: $' + res[3].price);
+                        console.log('\nThere are ' + res[3].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[3].price;
+                        intermezzo();
+                    }
                 });
                 break;
             case '405':
                 connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
                     if (err) throw err;
-                    console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
-                    console.log('\nItem: ' + res[4].item + '\nPrice: $' + res[4].price + '\n\n+++++++++++++++++++++++++++++\n');
-                    cart += res[4].price;
-                    intermezzo();
+                    if (res[4].quantity <= 0) {
+                        console.log('\nThere are no more ' + res[4].item + 'left');
+                    } else {
+                        connection.query('UPDATE accesories SET quantity = quantity - 1 WHERE id = 405');
+                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
+                        console.log('\nItem: ' + res[4].item + '\nPrice: $' + res[4].price);
+                        console.log('\nThere are ' + res[4].quantity + ' left' + '\n\n+++++++++++++++++++++++++++++\n');
+                        cart += res[4].price;
+                        intermezzo();
+                    }
                 });
                 break;
             default:
@@ -265,13 +345,12 @@ let sale = function () {
         }
     })
 }
+// Shows the amount in the shopping cart
 let checkout = function () {
     console.log('\n++++++++++++++++++++++++++++\nYour cart is at $' + cart + '.00\n\n+++++++++++++++++++++++++++++\n');
     intermezzo();
 }
-let inventory = function () {
-
-}
+// Ends connection
 let exit = function () {
     connection.end();
     console.log('\n\n\nHave an amazing Day :)\n\n\n');
