@@ -4,6 +4,7 @@ CREATE DATABASE sykkel_DB;
 
 USE sykkel_DB;
 
+DROP TABLE IF EXISTS road_bikes;
 CREATE TABLE road_bikes
 (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -31,9 +32,14 @@ quantity INT NULL
 );
     ALTER TABLE accesories AUTO_INCREMENT = 401;
     
-
+    
+UPDATE road_bikes SET quantity = 2 WHERE id = 202;
 SELECT * FROM road_bikes;
 SELECT * FROM mountain_bikes;
 SELECT * FROM accesories;
+
+
+
+
 
 
