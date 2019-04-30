@@ -117,7 +117,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[0].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[0].item + 'left');
+                        console.log('\nThere are no more ' + res[0].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 201');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -132,7 +133,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[1].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[1].item + 'left');
+                        console.log('\nThere are no more ' + res[1].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 202');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -147,7 +149,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[2].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[2].item + 'left');
+                        console.log('\nThere are no more ' + res[2].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 203');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -162,7 +165,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[3].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[3].item + 'left');
+                        console.log('\nThere are no more ' + res[3].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 204');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -177,7 +181,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[4].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[4].item + 'left');
+                        console.log('\nThere are no more ' + res[4].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 205');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -192,7 +197,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[0].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[0].item + 'left');
+                        console.log('\nThere are no more ' + res[0].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE mountain_bikes SET quantity = quantity - 1 WHERE id = 301');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -207,7 +213,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[1].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[1].item + 'left');
+                        console.log('\nThere are no more ' + res[1].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE mountain_bikes SET quantity = quantity - 1 WHERE id = 302');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -222,7 +229,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[2].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[2].item + 'left');
+                        console.log('\nThere are no more ' + res[2].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE mountain_bikes SET quantity = quantity - 1 WHERE id = 303');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -237,7 +245,7 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[3].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[3].item + 'left');
+                        console.log('\nThere are no more ' + res[3].item + 'left\n\n+++++++++++++++++++++++++++++\n');
                         intermezzo();
                     } else {
                         connection.query('UPDATE mountain_bikes SET quantity = quantity - 1 WHERE id = 304');
@@ -253,7 +261,8 @@ let sale = function () {
                connection.query('SELECT item, price, quantity FROM mountain_bikes', function (err, res) {
                    if (err) throw err;
                    if (res[4].quantity <= 0) {
-                       console.log('\nThere are no more ' + res[4].item + 'left');
+                       console.log('\nThere are no more ' + res[4].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                       intermezzo();
                    } else {
                        connection.query('UPDATE mountain_bikes SET quantity = quantity - 1 WHERE id = 305');
                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -268,7 +277,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
                     if (err) throw err;
                     if (res[0].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[0].item + 'left');
+                        console.log('\nThere are no more ' + res[0].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE accesories SET quantity = quantity - 1 WHERE id = 401');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -283,7 +293,8 @@ let sale = function () {
                connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
                    if (err) throw err;
                    if (res[1].quantity <= 0) {
-                       console.log('\nThere are no more ' + res[1].item + 'left');
+                       console.log('\nThere are no more ' + res[1].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                       intermezzo();
                    } else {
                        connection.query('UPDATE accesories SET quantity = quantity - 1 WHERE id = 402');
                        console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -298,7 +309,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
                     if (err) throw err;
                     if (res[2].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[2].item + 'left');
+                        console.log('\nThere are no more ' + res[2].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE accesories SET quantity = quantity - 1 WHERE id = 403');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -313,7 +325,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
                     if (err) throw err;
                     if (res[3].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[3].item + 'left');
+                        console.log('\nThere are no more ' + res[3].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE accesories SET quantity = quantity - 1 WHERE id = 404');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
@@ -328,7 +341,8 @@ let sale = function () {
                 connection.query('SELECT item, price, quantity FROM accesories', function (err, res) {
                     if (err) throw err;
                     if (res[4].quantity <= 0) {
-                        console.log('\nThere are no more ' + res[4].item + 'left');
+                        console.log('\nThere are no more ' + res[4].item + 'left\n\n+++++++++++++++++++++++++++++\n');
+                        intermezzo();
                     } else {
                         connection.query('UPDATE accesories SET quantity = quantity - 1 WHERE id = 405');
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
