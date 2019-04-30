@@ -114,11 +114,18 @@ let sale = function () {
     }).then(function (answer) {
         switch (answer.sales) {
             case '201':
+            //=======================================================================================================
+            // Work on this section
                 connection.query('SELECT item, price, quantity FROM road_bikes', function (err, res) {
                     if (err) throw err;
                     if (res[0].quantity <= 0) {
                         console.log('There is not enough of ' + res[0].item + 'left');
                     } else {
+                        // HERE ALSO
+                        connection.query('UPDATE road_bikes SET quantity = quantity - 1 WHERE id = 201', function (err, res) {
+                            if (err) throw err;
+                            console.log('There are ' + res[0].quantity + ' left');
+                        });
                         console.log('\n++++++++++++++++++++++++++++\n' + '\nYou have chosen:');
                         console.log('\nItem: ' + res[0].item + '\nPrice: $' + res[0].price + '\n\n+++++++++++++++++++++++++++++\n');
                         cart += res[0].price;
