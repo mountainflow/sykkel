@@ -4,4 +4,4 @@ Marketplace for bikes and parts
 ## Here's a video on how it works:
 
 
-![](liri.gif)
+![](sykkel.gif)
